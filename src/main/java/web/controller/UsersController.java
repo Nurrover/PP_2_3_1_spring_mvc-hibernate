@@ -34,7 +34,7 @@ public class UsersController {
     }
 
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String formCreateUser(@ModelAttribute("user") User user) {
         return "users/new";
     }
 
@@ -55,7 +55,7 @@ public class UsersController {
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, BindingResult bindingResult,
+    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                              @PathVariable("id") int id) {
         if (bindingResult.hasErrors()) {
             return "users/edit";
